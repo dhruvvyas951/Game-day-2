@@ -7,24 +7,7 @@ var Civilian1,Civilian2,Civilian3,Civilian4,Civilian5;
 var civilianGroup;
 var gameState = "Play";
 var obstacleGroup;
-var Play;
-var Pause;
-
-//this function will load all the images
-function preload(){
-
-  car = loadImage("images/aero.png");
-  Civilian1 = loadImage("images/mclaren.png");
-  Civilian2 = loadImage("images/mercedes AMG.png");
-  Civilian3 = loadImage("images/cooper1.png");
-  Civilian4 = loadImage("images/cooper2.png");
-  Civilian5 = loadImage("images/cooper3.png");
-  Black = loadImage("images/Gameover.png");
-  back = loadImage("images/bridge.png");
-  obstacle = loadImage("images/manhole.png");
-  Play = loadImage("images/playButton.JPG");
-  Pause = loadImage("images/pauseButton.JPG");
-}
+var Play,Pause,Restart;
 
 //this function is to set up all the commands
   function setup() {
@@ -50,14 +33,13 @@ function preload(){
     //for car movement
     keyPressed();
 
-    textSize(20);
 }
 
 //this function is to draw the sprites
   function draw() {
     background(255,255,255);
 
-    if(gameState === 'Play'){
+    if(gameState === "Play"){
 
       //for score
       count = count + Math.round(World.frameRate/61);
@@ -77,7 +59,7 @@ function preload(){
 
         if(player.isTouching(obstacleGroup) || player.isTouching(civilianGroup)){
 
-          gameState = "End"
+          gameState = "End";
         }
 
     }
@@ -92,7 +74,7 @@ function preload(){
       //black screen
       black = createSprite(500,400,1000,1000);
       black.addImage("black",Black);
-      black.scale = 1;
+      black.scale = 2;
 
       text("GAME OVER!",200,200);
       
@@ -100,6 +82,7 @@ function preload(){
 
    drawSprites();
 
-   //text("Your score = " + count + "KM",200,200);
+   textSize(20);
+   fill("white");
+   //text("Distance travelled " + count + "KM",20,50);
       }
-
